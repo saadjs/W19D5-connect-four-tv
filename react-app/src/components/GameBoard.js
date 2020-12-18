@@ -41,15 +41,15 @@ function GameBoard(props) {
 		e.preventDefault();
 		e.stopPropagation();
 		const move = await makeMove(gameId, props.currentPlayer, col_id);
-		if (move.success) {
-			props.setCurrentPlayer(
-				props.currentPlayer == props.player1
-					? props.player2
-					: props.player1
-			);
-		} else {
-			console.log(move.error);
-		}
+		// if (move.success) {
+		// 	props.setCurrentPlayer(
+		// 		props.currentPlayer == props.player1
+		// 			? props.player2
+		// 			: props.player1
+		// 	);
+		// } else {
+		// 	console.log(move.error);
+		// }
 	}
 
 	function buildRow(row_id) {
