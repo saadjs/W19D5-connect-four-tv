@@ -26,7 +26,10 @@ function GameBoard(props) {
 		function () {
 			async function getGameUpdates() {
 				let { game } = await getGame(gameId);
-				setGrid(game.board);
+        setGrid(game.board);
+        if(game.winner){
+          alert(`${game.winner} wins!!`);
+        }
 				props.setPlayer1(game.player1);
 				props.setPlayer2(game.player2);
 			}
