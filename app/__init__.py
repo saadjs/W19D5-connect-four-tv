@@ -8,6 +8,9 @@ from .models import db
 from .api.game_routes import game_routes
 
 from .config import Config
+from dotenv import load_dotenv
+load_dotenv()
+print(os.environ.get('DATABASE_URL'))
 
 app = Flask(__name__)
 
