@@ -26,10 +26,28 @@ class Game(db.Model):
       if isWon:
         return isWon
     for n in range(5):
-      isWon = self.rowIsWon(n, board)
+      isWon = self.rowIsWon(n, board) or self.checkDiagUp(n, board) or self.checkDiagDown(n, board)
       if isWon:
         return isWon
 
+
+  def checkDiagUp(self, n, board):
+    first = board[0][n]
+    for dif in range(1, 4):
+      if n+dif >= 4:
+        return None
+      if board[dif][n+dif] != first:
+        return None
+    return first
+
+  def checkDiagDown(self, n, board):
+    first = board[0][n]
+    for dif in range(1, 4):
+      if n-dif < 0:
+        return None
+      if board[dif][n-dif] != first:
+        return None
+    return first
 
 
   def colIsWon(self, col):

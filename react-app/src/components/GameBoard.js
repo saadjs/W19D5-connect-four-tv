@@ -29,6 +29,7 @@ function GameBoard(props) {
         setGrid(game.board);
         if(game.winner){
           alert(`${game.winner} wins!!`);
+          clearInterval(intervalHandler);
         }
 				props.setPlayer1(game.player1);
 				props.setPlayer2(game.player2);
