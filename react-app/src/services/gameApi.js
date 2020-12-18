@@ -29,6 +29,22 @@ export const addPlayer = async (gameId, player2) => {
 	}
 }
 
+export const makeMove = async (gameId, playerId, column) => {
+  const res = await fetch(`/api/games/${gameId}/player/${playerId}/move`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ column }),
+  });
+  if (res.ok) {
+    //res coming in as {'game': game.id}
+    return await res.json();
+  } else {
+    console.log(res.error);
+  }
+};
+
 export const getGame = async (gameId) => {
 	const res = await fetch(`/api/games/${gameId}`, {
 		headers: {
@@ -38,8 +54,4 @@ export const getGame = async (gameId) => {
 
 	// res coming in as {'game': game object}
 	return res.ok ? await res.json() : console.log(res.error)
-}
-
-export const makeMove = async (gameId, playerId) => {
-  // TODO
 }
