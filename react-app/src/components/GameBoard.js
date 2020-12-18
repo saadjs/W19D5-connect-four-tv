@@ -49,7 +49,10 @@ function GameBoard(props) {
 		// 	);
 		// } else {
 		// 	console.log(move.error);
-		// }
+    // }
+    if(move.error){
+      alert(move.error);
+    }
 	}
 
 	function buildRow(row_id) {
