@@ -27,10 +27,16 @@ function GameBoard(props) {
     return () => clearInterval(intervalHandler);
   }, [props, gameId]);
 
-  function handleClick(e, col_id) {
+  async function handleClick(e, col_id) {
     e.preventDefault()
     e.stopPropagation()
-      makeMove(gameId, props.currentPlayer, col_id);
+    const move = await makeMove(gameId, props.currentPlayer, col_id);
+    if (move.success) {
+      props.setCurrentPlayer(props.currentPlayer == props.player1? props.player2:props.player1)
+    }
+    else {
+      console.log(move.error)
+    }
   }
 
   function buildRow(row_id) {

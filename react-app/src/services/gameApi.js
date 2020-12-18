@@ -41,7 +41,8 @@ export const makeMove = async (gameId, playerId, column) => {
     //res coming in as {'game': game.id}
     return await res.json();
   } else {
-    console.log(res.error);
+		console.log(res.error);
+		return {error:res.error}
   }
 };
 
