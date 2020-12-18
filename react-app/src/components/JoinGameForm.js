@@ -4,7 +4,7 @@ import {addPlayer} from "../services/gameApi"
 
 
 
-const JoinGameForm = () => {
+const JoinGameForm = ({setPlayer2}) => {
     const [gameId, setGameId] = useState("")
     const [playerName, setPlayerName] = useState("")
     const [redirect, setRedirect] = useState(null);
@@ -13,7 +13,10 @@ const JoinGameForm = () => {
         e.preventDefault();
         const response = await addPlayer(parseInt(gameId), playerName);
         console.log(response);
+
         if (response.game) {
+            setPlayer2(playerName)
+            localStorage.setItem(`player2[${gameId}]`, playerName)
             setRedirect(<Redirect to={`/game/${gameId}`}/>)
         }
     }
